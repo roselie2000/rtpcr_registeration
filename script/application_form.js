@@ -132,7 +132,7 @@ function display_history() {
     console.log(arr);
     console.log(stored_arr);
     var display = document.getElementById("myTable");
-    
+    if (stored_arr) {
     
     stored_arr.forEach(element => {    
         var newRow = display.insertRow(row);
@@ -158,5 +158,9 @@ function display_history() {
         his_cell9.innerHTML = element.report;
         his_cell10.innerHTML = element.gen;
         row++;
-    });     
+    });  
+    }
+    else {
+      console.log("no entries");
+    }   
 }
