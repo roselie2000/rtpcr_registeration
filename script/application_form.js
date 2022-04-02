@@ -33,7 +33,6 @@ function displayInfo(a) {
       report:reportnumber,
       gen:gender
   })
-  console.log(arr);
 
   if (
     !pname ||
@@ -85,7 +84,6 @@ function displayInfo(a) {
 
 function gethistory(){
   var history = document.getElementById("myTable");
-  console.log(history);
 }
 
 function tableSearch() {
@@ -100,7 +98,6 @@ function tableSearch() {
 
     if (td) {
       txtValue = td.textContent || td.innerText;
-      console.log(txtValue);
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
       } else {
@@ -129,8 +126,6 @@ function display_history() {
     stored_arr = localStorage.getItem("user_entries");
     stored_arr =  JSON.parse(stored_arr);
     arr = stored_arr;
-    console.log(arr);
-    console.log(stored_arr);
     var display = document.getElementById("myTable");
     if (stored_arr) {
     
