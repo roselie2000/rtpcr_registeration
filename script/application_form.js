@@ -1,9 +1,9 @@
 var entry = document.getElementById("btnsub");
 entry.addEventListener("click", displayInfo);
 var row = 1;
-var arr = [];
 function displayInfo(a) {
   a.preventDefault();
+  var arr = [];
   var pname = document.getElementById("name").value;
   var adr = document.getElementById("adrno").value;
   var dob = document.getElementById("dob").value;
