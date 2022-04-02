@@ -1,6 +1,7 @@
 var entry = document.getElementById("btnsub");
 entry.addEventListener("click", displayInfo);
 var row = 1;
+var arr = [];
 function displayInfo(a) {
   a.preventDefault();
   var pname = document.getElementById("name").value;
@@ -20,6 +21,19 @@ function displayInfo(a) {
   else {
     gender = "Female";
   }
+  arr.push({
+      user_name:pname,
+      adhaar_no:adr,
+      date_of_birth:dob,
+      place:city,
+      date_of_test:dateoftest,
+      time_of_test:timeoftest,
+      result:value,
+      lab_name:labname,
+      report:reportnumber,
+      gen:gender
+  })
+  console.log(arr);
 
   if (
     !pname ||
@@ -65,6 +79,7 @@ function displayInfo(a) {
   row++;
   hide();
   gethistory();
+  save();
   document.querySelector("form").reset();
 }
 
@@ -105,4 +120,43 @@ function hide() {
   document.getElementById("main").style.display = "none";
 }
 
+function save() {
+    localStorage.setItem("user_entries", JSON.stringify(arr));
+}
 
+function display_history() {
+    var stored_arr = [];
+    stored_arr = localStorage.getItem("user_entries");
+    stored_arr =  JSON.parse(stored_arr);
+    arr = stored_arr;
+    console.log(arr);
+    console.log(stored_arr);
+    var display = document.getElementById("myTable");
+    
+    
+    stored_arr.forEach(element => {    
+        var newRow = display.insertRow(row);
+        var his_cell1 = newRow.insertCell(0);
+        var his_cell2 = newRow.insertCell(1);
+        var his_cell3 = newRow.insertCell(2);
+        var his_cell4 = newRow.insertCell(3);
+        var his_cell5 = newRow.insertCell(4);
+        var his_cell6 = newRow.insertCell(5);
+        var his_cell7 = newRow.insertCell(6);
+        var his_cell8 = newRow.insertCell(7);
+        var his_cell9 = newRow.insertCell(8);
+        var his_cell10 = newRow.insertCell(9);
+
+        his_cell1.innerHTML = element.user_name;
+        his_cell2.innerHTML = element.adhaar_no;
+        his_cell3.innerHTML = element.date_of_birth;
+        his_cell4.innerHTML = element.place;
+        his_cell5.innerHTML = element.date_of_test;
+        his_cell6.innerHTML = element.time_of_test;
+        his_cell7.innerHTML = element.result;
+        his_cell8.innerHTML = element.lab_name;
+        his_cell9.innerHTML = element.report;
+        his_cell10.innerHTML = element.gen;
+        row++;
+    });     
+}
