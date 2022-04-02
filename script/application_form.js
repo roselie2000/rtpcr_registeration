@@ -1,20 +1,6 @@
 var entry = document.getElementById("btnsub");
 entry.addEventListener("click", displayInfo);
 var row = 1;
-var history_data = [
-  {
-    user_name:"Roselie",
-    adhaar_no:"2819 2367 9754",
-    date_of_birth:"17-02-2000",
-    place:"Tirunelveli",
-    date_of_test:"28-02-2022",
-    time_of_test:"9:30",
-    result:"Negative",
-    lab_name:"MercyLab",
-    report:"6354",
-    gen:"Female"
-  }
-];
 function displayInfo(a) {
   a.preventDefault();
   var pname = document.getElementById("name").value;
@@ -33,18 +19,6 @@ function displayInfo(a) {
   }
   else {
     gender = "Female";
-  }
-  var arr = {
-      user_name:pname,
-      adhaar_no:adr,
-      date_of_birth:dob,
-      place:city,
-      date_of_test:dateoftest,
-      time_of_test:timeoftest,
-      result:value,
-      lab_name:labname,
-      report:reportnumber,
-      gen:gender
   }
 
   if (
@@ -75,6 +49,7 @@ function displayInfo(a) {
   var cell8 = newRow.insertCell(7);
   var cell9 = newRow.insertCell(8);
   var cell10 = newRow.insertCell(9);
+  var cell11 = newRow.insertCell(10);
 
   cell1.innerHTML = pname;
   cell2.innerHTML = adr;
@@ -88,11 +63,14 @@ function displayInfo(a) {
   cell10.innerHTML = gender;
 
   row++;
-  history_data.push(arr);
-  console.log(history_data);
   hide();
-  localStorage.setItem("user_entries", JSON.stringify(history_data));
+  gethistory();
   document.querySelector("form").reset();
+}
+
+function gethistory(){
+  var history = document.getElementById("myTable");
+  console.log(history);
 }
 
 function tableSearch() {
@@ -107,6 +85,7 @@ function tableSearch() {
 
     if (td) {
       txtValue = td.textContent || td.innerText;
+      console.log(txtValue);
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
       } else {
@@ -126,42 +105,4 @@ function hide() {
   document.getElementById("main").style.display = "none";
 }
 
-function display_history() {
-    var stored_arr = [];
-    stored_arr = localStorage.getItem("user_entries");
-    stored_arr =  JSON.parse(stored_arr);
-    history_data = stored_arr;
-    console.log(history_data);
-    var display = document.getElementById("myTable");
-    if (stored_arr) {
-    
-    stored_arr.forEach(element => {    
-        var newRow = display.insertRow(row);
-        var his_cell1 = newRow.insertCell(0);
-        var his_cell2 = newRow.insertCell(1);
-        var his_cell3 = newRow.insertCell(2);
-        var his_cell4 = newRow.insertCell(3);
-        var his_cell5 = newRow.insertCell(4);
-        var his_cell6 = newRow.insertCell(5);
-        var his_cell7 = newRow.insertCell(6);
-        var his_cell8 = newRow.insertCell(7);
-        var his_cell9 = newRow.insertCell(8);
-        var his_cell10 = newRow.insertCell(9);
 
-        his_cell1.innerHTML = element.user_name;
-        his_cell2.innerHTML = element.adhaar_no;
-        his_cell3.innerHTML = element.date_of_birth;
-        his_cell4.innerHTML = element.place;
-        his_cell5.innerHTML = element.date_of_test;
-        his_cell6.innerHTML = element.time_of_test;
-        his_cell7.innerHTML = element.result;
-        his_cell8.innerHTML = element.lab_name;
-        his_cell9.innerHTML = element.report;
-        his_cell10.innerHTML = element.gen;
-        row++;
-    });  
-    }
-    else {
-      console.log("no entries");
-    }   
-}
