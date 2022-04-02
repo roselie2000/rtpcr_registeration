@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rtpcr registeration</title>
+    <link rel="stylesheet" href="../themes/application_form.css" />
+  </head>
+  <body>
+    <header id="head">
+      <h1>RT-PCR Registeration Form</h1>
+    </header>
+
+    <main id="main">
+      <form action="#" method="post" id="myform">
+        <div class="input">
+          <label for="name">Person Name <span>*</span></label>
+          <input
+            type="text"
+            placeholder="Enter your name here"
+            id="name"
+            name="person_name"
+          />
+        </div>
+
+        <div class="input">
+          <label for="adr no">Adhaar card No <span>*</span></label>
+          <input
+            type="text"
+            placeholder="Enter your Adhaar no here"
+            id="adrno"
+            name="adhaar_no"
+          />
+        </div>
+
+        <div class="input">
+          <label for="dob">Date of Birth <span>*</span></label>
+          <input type="date" id="dob" name="dob" />
+        </div>
+
+        <div class="input">
+          <label for="city">City <span>*</span></label>
+          <input
+            type="text"
+            placeholder="Enter your City name here"
+            id="city"
+            name="city"
+          />
+        </div>
+
+        <div class="input">
+          <label for="dtest">Date of Test</label>
+          <input type="date" id="dtest" name="Date_of_test" />
+        </div>
+
+        <div class="input">
+          <label for="ttst">Time of Test</label>
+          <input type="time" id="ttest" name="time_of_test" />
+        </div>
+
+        <div class="input">
+          <label for="result">Result</label>
+          <select name="result" id="res">
+            <option value="default">Select</option>
+            <option value="positive">Positive</option>
+            <option value="negative">Negative</option>
+          </select>
+        </div>
+
+        <div class="input">
+          <label for="lname">Lab Name</label>
+          <input type="text" id="lname" name="lab_name" />
+        </div>
+
+        <div class="input">
+          <label for="report">Report no</label>
+          <input type="text" id="report" name="report_no" />
+        </div>
+
+        <div class="radio">
+          <label for="gender">Gender</label>
+
+          <div>
+            <input type="radio" name="gender" id="male" checked value="male" />
+            <label for="male">Male</label>
+          </div>
+
+          <div>
+            <input type="radio" name="gender" id="female" value="female" />
+            <label for="female">Female</label>
+          </div>
+        </div>
+
+        <input type="submit" class="btn" id="btnsub" value="submit">
+        </button>
+      </form>
+    </main>
+    <div class="table">
+      <input type="search" id="myInput" onkeyup="tableSearch()" placeholder="Aadhaar card no">
+      <input type="button" value="Add New Test" onclick="show()"/>
+    </div>
+  
+      <div class="history-container">
+        <table id="myTable">
+          <tr>
+            <th>Person Name</th>
+            <th>Adhaar card no</th>
+            <th>Date of Birth</th>
+            <th>City</th>
+            <th>Date of Test</th>
+            <th>Time of Test</th>
+            <th>Result</th>
+            <th>Lab name</th>
+            <th>Report no</th>
+            <th>Gender</th>
+          </tr>
+        </table>
+    </div>
+
+    <script src="../script/application_form.js"></script>
+  </body>
+</html>
