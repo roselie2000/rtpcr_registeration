@@ -1,7 +1,20 @@
 var entry = document.getElementById("btnsub");
 entry.addEventListener("click", displayInfo);
 var row = 1;
-var history_data = [];
+var history_data = [
+  {
+    user_name:"Roselie",
+    adhaar_no:"2819 2367 9754",
+    date_of_birth:"17-02-2000",
+    place:"Tirunelveli",
+    date_of_test:"28-02-2022",
+    time_of_test:"9:30",
+    result:"Negative",
+    lab_name:"MercyLab",
+    report:"6354",
+    gen:"Female"
+  }
+];
 function displayInfo(a) {
   a.preventDefault();
   var pname = document.getElementById("name").value;
