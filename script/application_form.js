@@ -1,9 +1,9 @@
 var entry = document.getElementById("btnsub");
 entry.addEventListener("click", displayInfo);
 var row = 1;
+var history_data = [];
 function displayInfo(a) {
   a.preventDefault();
-  var arr = [];
   var pname = document.getElementById("name").value;
   var adr = document.getElementById("adrno").value;
   var dob = document.getElementById("dob").value;
@@ -21,7 +21,7 @@ function displayInfo(a) {
   else {
     gender = "Female";
   }
-  arr.push({
+  var arr = {
       user_name:pname,
       adhaar_no:adr,
       date_of_birth:dob,
@@ -32,7 +32,7 @@ function displayInfo(a) {
       lab_name:labname,
       report:reportnumber,
       gen:gender
-  })
+  }
 
   if (
     !pname ||
@@ -62,7 +62,6 @@ function displayInfo(a) {
   var cell8 = newRow.insertCell(7);
   var cell9 = newRow.insertCell(8);
   var cell10 = newRow.insertCell(9);
-  var cell11 = newRow.insertCell(10);
 
   cell1.innerHTML = pname;
   cell2.innerHTML = adr;
@@ -76,14 +75,11 @@ function displayInfo(a) {
   cell10.innerHTML = gender;
 
   row++;
+  history_data.push(arr);
+  console.log(history_data);
   hide();
-  gethistory();
-  save();
+  localStorage.setItem("user_entries", JSON.stringify(history_data));
   document.querySelector("form").reset();
-}
-
-function gethistory(){
-  var history = document.getElementById("myTable");
 }
 
 function tableSearch() {
@@ -117,15 +113,12 @@ function hide() {
   document.getElementById("main").style.display = "none";
 }
 
-function save() {
-    localStorage.setItem("user_entries", JSON.stringify(arr));
-}
-
 function display_history() {
     var stored_arr = [];
     stored_arr = localStorage.getItem("user_entries");
     stored_arr =  JSON.parse(stored_arr);
-    arr = stored_arr;
+    history_data = stored_arr;
+    console.log(history_data);
     var display = document.getElementById("myTable");
     if (stored_arr) {
     
